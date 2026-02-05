@@ -1,0 +1,12 @@
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.Domain\bin\Debug\net10.0\JustinaSimulator.Domain.deps.json
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.Domain\bin\Debug\net10.0\JustinaSimulator.Domain.dll
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.Domain\bin\Debug\net10.0\JustinaSimulator.Domain.pdb
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.Domain\obj\Debug\net10.0\JustinaSimulator.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.Domain\obj\Debug\net10.0\JustinaSimulator.Domain.AssemblyInfoInputs.cache
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.Domain\obj\Debug\net10.0\JustinaSimulator.Domain.AssemblyInfo.cs
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.Domain\obj\Debug\net10.0\JustinaSimulator.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.Domain\obj\Debug\net10.0\JustinaSimulator.Domain.sourcelink.json
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.Domain\obj\Debug\net10.0\JustinaSimulator.Domain.dll
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.Domain\obj\Debug\net10.0\refint\JustinaSimulator.Domain.dll
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.Domain\obj\Debug\net10.0\JustinaSimulator.Domain.pdb
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.Domain\obj\Debug\net10.0\ref\JustinaSimulator.Domain.dll

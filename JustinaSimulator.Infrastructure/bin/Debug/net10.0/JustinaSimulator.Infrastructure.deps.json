@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "JustinaSimulator.Infrastructure/1.0.0": {
+        "dependencies": {
+          "JustinaSimulator.Application": "1.0.0",
+          "JustinaSimulator.Domain": "1.0.0"
+        },
+        "runtime": {
+          "JustinaSimulator.Infrastructure.dll": {}
+        }
+      },
+      "JustinaSimulator.Application/1.0.0": {
+        "dependencies": {
+          "JustinaSimulator.Domain": "1.0.0"
+        },
+        "runtime": {
+          "JustinaSimulator.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "JustinaSimulator.Domain/1.0.0": {
+        "runtime": {
+          "JustinaSimulator.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "JustinaSimulator.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "JustinaSimulator.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "JustinaSimulator.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
