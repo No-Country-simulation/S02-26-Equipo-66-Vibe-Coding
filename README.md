@@ -13,11 +13,11 @@ Objetivos de esta plataforma:
 - Corroborar la asimilación y viabilidad del Sistema para luego, con posterioridad, aplicarlo a un robot propiamente dicho
 
 ### Conformación del Equipo
-* **Analista Programador C#:** Desarrollo de documentación y arquitectura C# .NET
+* **Analista Programadora C# Vibe Coding: [Beatriz Ebert Desarrolladora .NET ](https://github.com/Beaebert):** Desarrollo Analisis de Requerimientos, desarrollo de documentación (markdown) y arquitectura del software en C# .NET 10
 * **Diseñadores UX/UI:** Diseño de interfaz de control y feedback visual médico.
-* **Data Analyst y Data Engineers:** Entrenamiento de modelos para análisis de trayectorias.
+* **Data Analyst y Data Engineer: [Juan Paulatino](https://github.com/juan-paulatino):** Entrenamiento de modelos para análisis de trayectorias.
 * **Desarrolladores No-Code:** Desarrollo de Dashboards de métricas y prototipado rápido de vistas secundarias.
-* **Desarrolladores Vibe Coding:** Desarrollo de contenido Front End y Back End.
+
 
 ### Stack Tecnológico
 se estima utilizar 
