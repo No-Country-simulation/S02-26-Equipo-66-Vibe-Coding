@@ -21,4 +21,11 @@ public class PointerController : ControllerBase
         await _handler.HandleAsync(command);
         return Ok(new { Message = "Pointer moved", Target = command });
     }
+
+    [HttpGet("history")]
+    public async Task<IActionResult> GetHistory([FromServices] ISimulationStateRepository repository)
+    {
+        var robot = await repository.GetRobotAsync();
+        return Ok(robot.Trajectory);
+    }
 }

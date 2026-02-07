@@ -62,3 +62,28 @@ Estas son las variables que ya existen en el código y que deben usar para comun
 4.  **`CurrentTarget`** (Objeto): Representa el "Puntero" o destino actual del robot. Contiene los valores x, y, z.
     *   *Nota*: En el código estricto se llama `CurrentTarget`, pero en el JSON de respuesta lo verán dentro de la propiedad `target`.
 
+### Nuevo Endpoint: Historial de Trayectoria
+*   **Endpoint**: `/api/pointer/history`
+*   **Método**: `GET`
+*   **Descripción**: Devuelve una lista con TODAS las posiciones (X,Y,Z) registradas desde que inició la sesión. Ideal para que el Data Analyst descargue el "viaje" completo del quirófano.
+
+## Diccionario de Código (Clases y Atributos)
+
+Para que todos hablemos el mismo idioma, aquí explico qué significa cada término en el código fuente C#:
+
+### Clase `Coordinate` (Coordenada)
+Representa un punto único en el espacio 3D.
+*   **Atributo `X`**: Horizontal (derecha/izquierda).
+*   **Atributo `Y`**: Vertical (arriba/abajo).
+*   **Atributo `Z`**: Profundidad (adentro/afuera del cuerpo).
+
+### Clase `Robot` (El Cirujano Virtual)
+Es el "cerebro" que guarda el estado de la simulación.
+*   **Atributo `Id`**: Identificador único del robot (p.ej. guid-1234).
+*   **Atributo `CurrentTarget`**: Dónde está la punta de la herramienta AHORA MISMO.
+*   **Atributo `Trajectory`**: Una lista (colección) de todas las `Coordinate` por las que ha pasado. Es la "memoria" del movimiento.
+
+### Clase `MovePointerCommand` (La Orden)
+Es el mensaje que llega desde afuera (FlutterFlow) pidiendo moverse.
+*   Es solo un transporte de datos X, Y, Z. No tiene lógica, solo datos.
+
