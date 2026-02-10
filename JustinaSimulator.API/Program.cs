@@ -11,6 +11,7 @@ builder.Services.AddOpenApi();
 
 // Domain/Application Services
 builder.Services.AddScoped<MovePointerHandler>();
+builder.Services.AddScoped<JustinaSimulator.Application.UseCases.Click.ClickHandler>();
 
 // Infrastructure Services
 builder.Services.AddSingleton<ISimulationStateRepository, InMemorySimulationRepository>();

@@ -1,0 +1,18 @@
+{
+    "contract_name": "Move Pointer API",
+    "endpoint": "POST /api/pointer/move",
+    "description": "Moves the robot pointer to a new 3D coordinate.",
+    "request_body": {
+        "x": 10.5,
+        "y": 20.0,
+        "z": 5.0
+    },
+    "response_body": {
+        "message": "Pointer moved",
+        "target": {
+            "x": 10.5,
+            "y": 20.0,
+            "z": 5.0
+        }
+    }
+}

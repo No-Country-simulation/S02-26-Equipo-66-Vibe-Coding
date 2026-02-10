@@ -51,7 +51,7 @@ Comprender los requerimientos del desafío "Justina", conformar el equipo de tra
 * Evitar divagar en funcionalidades futuristas (sensores) cuando no tenemos el movimiento básico.
 * Acelerar la decisión de diseño en Figma para no bloquear al desarrollo.
 
-## ⏭️ Plan para Sprint 02 (Lunes 09/02)
+## ⏭️ Plan para el Sprint 02: Desarrollo del Core e Investigación de Herramientas No-Code
 1.  **C#:** Codificar clase `SurgicalRobot` y lógica de colisión (Vibe Coding).
 2.  **No-Code:** Definir herramienta final (Bubble vs FlutterFlow) tras prueba de exportación.
 3.  **UX:** Entregar Mockup de "Pantalla de Cirugía" con medidas (X,Y).

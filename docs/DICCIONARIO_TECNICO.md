@@ -48,7 +48,8 @@ Es una página web automática que lista todos los "enchufes" (Endpoints) dispon
 *   **Endpoint**: `/api/pointer/move`.
 *   **Body**: JSON (como se muestra arriba). Variables: `x`, `y`, `z` (Double).
 
-### Para el Analista de Datos
+### Para el Analista de Datos (Rol Vacante / Futuro)
+*   Aunque este rol no está activo actualmente, el sistema sigue generando los datos.
 *   Si necesitas registrar posiciones históricas:
     *   La API te entregará los datos limpios en formato JSON, listos para transformar en tablas.
 
@@ -65,7 +66,43 @@ Estas son las variables que ya existen en el código y que deben usar para comun
 ### Nuevo Endpoint: Historial de Trayectoria
 *   **Endpoint**: `/api/pointer/history`
 *   **Método**: `GET`
-*   **Descripción**: Devuelve una lista con TODAS las posiciones (X,Y,Z) registradas desde que inició la sesión. Ideal para que el Data Analyst descargue el "viaje" completo del quirófano.
+*   **Descripción**: Devuelve una lista con TODAS las posiciones (X,Y,Z) registradas.
+
+#### Ejemplo de JSON de Respuesta (Historial):
+```json
+[
+  {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  {
+    "x": 10.5,
+    "y": 5.0,
+    "z": 2.1
+  },
+  {
+    "x": 15.2,
+    "y": 8.4,
+    "z": 3.0
+  }
+]
+```
+
+### Nuevo Endpoint: Acción de Click (Operar)
+*   **Endpoint**: `/api/pointer/click`
+*   **Método**: `POST`
+*   **Body**: `{ "x": ..., "y": ..., "z": ... }`
+*   **Descripción**: Intenta realizar una operación en el punto actual. Devuelve si fue seguro o peligroso.
+
+#### Ejemplo de JSON de Respuesta (Click Peligroso):
+```json
+{
+  "message": "Critical Error: Operation out of safe zone",
+  "status": 2,  // 0=Safe, 1=Warning, 2=Danger
+  "target": { "x": 50, "y": 50, "z": 50 }
+}
+```
 
 ## Diccionario de Código (Clases y Atributos)
 
