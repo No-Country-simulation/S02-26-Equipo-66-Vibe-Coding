@@ -6,15 +6,9 @@
 **Scrum Master (Acting):** Analista Programadora C# [Beatriz Ebert Desarrolladora .NET ](https://github.com/Beaebert)
 
 ## 🎯 Objetivo del Sprint
-Comprender los diferentes tipos de simuladores quirúrgicos y sus características, y comenzar el desarrollo del core del simulador. Investigar herramientas No-Code para el desarrollo del simulador. Aprender sobre la integración de herramientas No-Code con el core del simulador. Definir el stack tecnológico.
+Comprender los diferentes tipos de simuladores quirúrgicos y sus características, continuar el desarrollo del core del simulador. Investigar herramientas No-Code para el desarrollo del simulador. Aprender sobre la integración de herramientas No-Code con el core del simulador. Definir el stack tecnológico.
 
 ## 📅 Bitácora Diaria (Daily Log)
-
-### Viernes 06/02 y Domingo 08/02 - Receso del equipo
-* **Actividad:** Receso del equipo.
-* **Resultados:**
-    * El equipo se tomó un receso.
-* **Bloqueos:** No se encontraron bloqueos.
 
 ### Sábado 07/02 - Investigación de simuladores quirúrgicos y sus características
 * **Actividad:** Investigación de simuladores quirúrgicos y sus características.
@@ -26,13 +20,23 @@ Comprender los diferentes tipos de simuladores quirúrgicos y sus característic
 * **Bloqueos:** El equipo entero no posee conocimiento en manejo de objetos 3D, por lo tanto la recreación realista será un resultado esperable en el futuro.
 
 ### Lunes 09/02 - Determinar qué se encuentra construido y qué se desarrollará en el Sprint 02
-* **Actividad:** Determinar qué se encuentra construido y qué se desarrollará.
-    * Determinar qué herramientas utilizara el Data Engineer, y cómo se conectara con el simulador.
-    * Determinar cómo se realizaran las pruebas del simulador.
+* **Actividad:** 
+    * Determinar qué se encuentra construido y qué se desarrollará.
+    * Se dialogó sobre el uso de herramientas No-Code para el desarrollo del simulador.
+    * Se dialogó sobre la integración de herramientas No-Code con el core del simulador.
+    * Se dialogó sobre el stack tecnológico.
+    * Se manifestó la situación de cada uno en individual y en equipo.
+    * Nuevamente se revisó el posible diseño de la interfaz de usuario.
+    * Se determino cuál es la funcionalidad más compleja y con nivel de urgencia de acuerdo a los requerimientos del proyecto.
 
 * **Resultados:**
-    * Se determinó que se encuentra construido y qué se desarrollará.
-* **Bloqueos:** No se encontraron bloqueos.
+    * Se determinó lo que se encuentra construido y qué falta por desarrollar.
+    * Se determinó que el Data Engineer utilizará Python y cómo se conectara con el simulador.
+    * Se determinó cómo se realizaran las pruebas del simulador.
+* **Bloqueos:**
+    * Falta definir qué herramientas utilizará el Data Engineer, y cómo se conectara con el simulador.
+    * Falta definir cómo se realizaran las pruebas del simulador.
+    * Falta tener una visión Front End con la cuál comenzar a diseñar y trabajar.
 
 
 ### Jueves 12/02 - Cierre de Sprint

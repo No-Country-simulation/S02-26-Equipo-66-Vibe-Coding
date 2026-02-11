@@ -15,7 +15,7 @@ Comprender los requerimientos del desafío "Justina", conformar el equipo de tra
 * **Resultados:**
     * Entendimiento del problema: Se busca validar software y UX, no construir hardware.
     * Identificación de roles: 1 Dev C# (Vibe Coding), 3 UX/UI, 1 No-Code, 2 Data Engineer.
-* **Bloqueos:** Desconocimiento general del dominio médico y falta de roles de gestión (Project Manager, Product Owner y Scrum Master).
+* **Bloqueos:** Desconocimiento general del dominio médico y falta de roles de gestión (Tech Leader,Project Manager, Product Owner y Scrum Master).
 
 ### Martes 03/02 - Investigación Asíncrona
 * **Actividad:** Trabajo individual de investigación.
@@ -49,9 +49,10 @@ Comprender los requerimientos del desafío "Justina", conformar el equipo de tra
 
 ### 👎 Lo que debemos mejorar (Stop doing)
 * Evitar divagar en funcionalidades futuristas (sensores) cuando no tenemos el movimiento básico.
+* Agregar datos en base a funcionalidades no solicitadas en los requerimientos o de hardware no mencionado ni disponible.
 * Acelerar la decisión de diseño en Figma para no bloquear al desarrollo.
 
-## ⏭️ Plan para el Sprint 02: Desarrollo del Core e Investigación de Herramientas No-Code
+## ⏭️ Plan para Sprint 02 (Lunes 09/02)
 1.  **C#:** Codificar clase `SurgicalRobot` y lógica de colisión (Vibe Coding).
 2.  **No-Code:** Definir herramienta final (Bubble vs FlutterFlow) tras prueba de exportación.
 3.  **UX:** Entregar Mockup de "Pantalla de Cirugía" con medidas (X,Y).

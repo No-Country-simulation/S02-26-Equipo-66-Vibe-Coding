@@ -1,6 +1,7 @@
 using JustinaSimulator.Application.UseCases.MovePointer;
 using JustinaSimulator.Application.UseCases.Click;
 using JustinaSimulator.Domain.Enums;
+using JustinaSimulator.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

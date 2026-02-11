@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justina Simulator - Test Visual</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #status-panel {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #444;
+        }
+
+        .data-row {
+            margin: 5px 0;
+        }
+
+        .label {
+            color: #888;
+        }
+
+        .value {
+            font-family: monospace;
+            font-weight: bold;
+            color: #00ffcc;
+        }
+
+        #canvas-area {
+            width: 800px;
+            height: 600px;
+            border: 2px solid #333;
+            background: #222;
+            position: relative;
+            cursor: crosshair;
+        }
+
+        /* The "Kidney" (Safety Zone) - Visual Representation of (0,0) to (10,10) */
+        /* Mapping: 0-10 units -> 0-400px on screen */
+        #safety-zone {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 100px;
+            /* Centered roughly */
+            left: 200px;
+            border: 2px dashed #00ff00;
+            background: rgba(0, 255, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ff00;
+            font-size: 20px;
+            pointer-events: none;
+            /* Let mouse pass through */
+        }
+
+        #indicator {
+            font-size: 48px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .safe {
+            color: #00ff00;
+        }
+
+        .warning {
+            color: #ffff00;
+        }
+
+        .danger {
+            color: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="status-panel">
+        <h3>Backend Status</h3>
+        <div class="data-row"><span class="label">API Envío:</span> <span id="api-status"
+                class="value">Esperando...</span></div>
+        <div class="data-row"><span class="label">Coordenada X:</span> <span id="coord-x" class="value">0.0</span></div>
+        <div class="data-row"><span class="label">Coordenada Y:</span> <span id="coord-y" class="value">0.0</span></div>
+        <div class="data-row"><span class="label">Respuesta Backend:</span></div>
+        <div id="indicator" class="safe">SAFE</div>
+    </div>
+
+    <div id="canvas-area">
+        <div id="safety-zone">ZONA SEGURA (RIÑÓN)</div>
+    </div>
+
+    <p style="color:#666">Mueve el mouse dentro del recuadro. Click para simular operación.</p>
+
+    <script>
+        const API_URL = "https://localhost:7231/api/pointer";
+        // Or http://localhost:5195 if https fails
+
+        const canvas = document.getElementById('canvas-area');
+        const indicator = document.getElementById('indicator');
+        const apiStatus = document.getElementById('api-status');
+        const safetyZone = document.getElementById('safety-zone');
+
+        // Throttling to avoid killing the API
+        let lastCallTime = 0;
+        const throttleMs = 100; // 10 calls per second max
+
+        // Coordinate Mapping logic
+        // Screen: 0 to 800px width. Model: 0 to 20 units.
+        // Safety Zone is 0 to 10 units.
+        function pxToUnit(px) {
+            return (px / 40); // 40px = 1 unit
+        }
+
+        async function sendMove(x, y) {
+            const now = Date.now();
+            if (now - lastCallTime < throttleMs) return;
+            lastCallTime = now;
+
+            try {
+                const response = await fetch(`${API_URL}/move`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ x: x, y: y, z: 5.0 }) // Assume Z is middle depth
+                });
+
+                if (response.ok) {
+                    apiStatus.textContent = "OK (200)";
+                    apiStatus.style.color = "#00ff00";
+                    // MVP: Visual Update logic is hypothetically returned by API 
+                    // But currently API just returns "Pointer moved". 
+                    // We simulate the visual status based on client logic for now 
+                    // until API returns the Status Enum in the response.
+
+                    // Actually, let's update the UI based on local check to be fast, 
+                    // but ideally, we should parse the API response.
+                    // Since our API currently returns { Message, Target }, 
+                    // we might not see the "Status" in the Move response yet (only in Click).
+                    // Let's implement local visual feedback matching the backend logic.
+
+                    updateVisualStatus(x, y);
+
+                } else {
+                    apiStatus.textContent = "Error " + response.status;
+                    apiStatus.style.color = "red";
+                }
+            } catch (err) {
+                apiStatus.textContent = "Desconectado";
+                apiStatus.style.color = "red";
+                console.error(err);
+            }
+        }
+
+        async function sendClick(x, y) {
+            try {
+                const response = await fetch(`${API_URL}/click`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ x: x, y: y, z: 5.0 })
+                });
+
+                const data = await response.json();
+
+                // data.status: 0=Safe, 1=Warning, 2=Danger
+                updateStatusDisplay(data.status);
+
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        function updateVisualStatus(x, y) {
+            // Replicating Backend logic: Safe is (0-10)
+            const isSafe = (x >= 0 && x <= 10) && (y >= 0 && y <= 10);
+
+            if (isSafe) {
+                updateStatusDisplay(0); // Safe
+            } else {
+                updateStatusDisplay(1); // Warning
+            }
+        }
+
+        function updateStatusDisplay(statusCode) {
+            indicator.className = "";
+            if (statusCode === 0) {
+                indicator.textContent = "SAFE";
+                indicator.classList.add("safe");
+                safetyZone.style.borderColor = "#00ff00";
+            } else if (statusCode === 1) {
+                indicator.textContent = "WARNING";
+                indicator.classList.add("warning");
+                safetyZone.style.borderColor = "#ffff00";
+            } else if (statusCode === 2) {
+                indicator.textContent = "DANGER!";
+                indicator.classList.add("danger");
+                safetyZone.style.borderColor = "#ff0000";
+            }
+        }
+
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            // Calculate coordinates relative to canvas (0,0 is top-left)
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            // Offset to match our visual safety zone
+            // Visual Safety Zone starts at left:200, top:100.
+            // Let's adjust coordinate system so (0,0) is the top-left of the safety zone
+            // for easier matching with backend logic.
+
+            const offsetX = 200;
+            const offsetY = 100;
+
+            const unitX = pxToUnit(mouseX - offsetX);
+            const unitY = pxToUnit(mouseY - offsetY);
+
+            document.getElementById('coord-x').textContent = unitX.toFixed(1);
+            document.getElementById('coord-y').textContent = unitY.toFixed(1);
+
+            sendMove(unitX, unitY);
+        });
+
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            const offsetX = 200;
+            const offsetY = 100;
+
+            const unitX = pxToUnit(mouseX - offsetX);
+            const unitY = pxToUnit(mouseY - offsetY);
+
+            sendClick(unitX, unitY);
+        });
+
+    </script>
+</body>
+
+</html>

@@ -38,3 +38,6 @@ C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.API\obj\Deb
 C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.API\obj\Debug\net10.0\JustinaSimulator.API.pdb
 C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.API\obj\Debug\net10.0\JustinaSimulator.API.genruntimeconfig.cache
 C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.API\obj\Debug\net10.0\ref\JustinaSimulator.API.dll
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\ebert\Documents\Proyecto Justina Simulador\JustinaSimulator.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
