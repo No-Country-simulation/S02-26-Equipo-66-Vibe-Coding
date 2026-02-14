@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JustinaSimulator.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2708fdb4cd79d6224d3f5de6db3463a1866cbbe5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1cbfe375607a2234e20c5218fa3007e30c746f1d")]
 [assembly: System.Reflection.AssemblyProductAttribute("JustinaSimulator.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JustinaSimulator.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

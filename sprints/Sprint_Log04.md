@@ -11,3 +11,12 @@ Comprender los requerimientos del desafío "Justina", conformar el equipo de tra
 ## 📅 Bitácora Diaria (Daily Log)
 
 ### Lunes 02/02 -
+
+
+## 📊 Retrospectiva del Sprint 01
+
+### 👍 Lo que hicimos bien (Start doing)
+* 
+
+### 👎 Lo que debemos mejorar (Stop doing)
+*
