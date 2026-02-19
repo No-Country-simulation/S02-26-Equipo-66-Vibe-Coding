@@ -1,6 +1,5 @@
 # Equipo S02-26-Equipo-66-Vibe-Coding
 Simulación Laboral de No Country - Febrero 2026: Plataforma de simulación y entrenamiento para cirugía robótica.
-
 # Justina: Simulador de Operación Quirúrgica con Robot
 ## Proyecto de Simulación de Operación Renal Mínimamente Invasiva
 
@@ -12,6 +11,23 @@ Desarrollar una plataforma digital de simulación que permita a los cirujanos en
 - Que el Operador Humano pueda interactuar con una interfaz de usuario (UX) realista, familiarizándose con el entorno de una consola quirúrgica en un ambiente seguro.
 - Recopilar métricas en tiempo real para conocimiento y posterior evaluación de desempeño de la sesión (precisión, tiempos, colisiones).
 - Corroborar la viabilidad lógica del sistema para, en el futuro, acoplar este "cerebro" a un robot de hardware real.
+
+### 🛠️ Resumen de Herramientas (Stack Tecnológico)
+Para la construcción ágil del MVP (*Vibe Coding*), nos alineamos con el catálogo tecnológico de No Country utilizando:
+
+* **Frontend (UI/UX):** 
+    * **Figma** (Prototipado médico), 
+    * **Radzen Blazor Studio** y 
+    * **Blazor WebAssembly** (Desarrollo de la interfaz de usuario interactiva 100% en C#).
+* **Backend (API & Core):** 
+    * **C# .NET 10** y 
+    * **Antigravity IDE** (Desarrollo de la lógica espacial y redacción de la documentación nativa en Markdown).
+* **Base de Datos:** 
+    * **SQLite** + **Entity Framework Core**. 
+  > 💡 *Nota: Se eligió SQLite por su agilidad (zero-config) para la fase MVP. Al usar EF Core, la migración a **SQL Server** en futuras etapas de producción será transparente y solo requerirá cambiar la cadena de conexión.*
+* **Gestión y Colaboración:** 
+    * **Markdown** (Versionado en Git) y 
+    * **Notion** (Proyectado para la gestión del conocimiento del equipo multidisciplinario).
 
 ### 👥 Conformación del Equipo (Actualizada)
 * **Tech Lead & Full Stack .NET Vibe Coding: [Beatriz Ebert](https://github.com/Beaebert):** Desarrollo del Core Backend (API), Frontend (Blazor), Arquitectura de Software (Analista Programadora C# .NET), y gestión ágil (Scrum Master Acting).
