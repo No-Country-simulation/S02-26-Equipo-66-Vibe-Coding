@@ -1,36 +1,40 @@
-# 🏁 Sprint Log 01: Discovery & Arquitectura
+# 🏁 Sprint Log 03: Transición a Blazor y Reorganización de Equipo
 
-**Fecha Inicio del Sprint:** Lunes 02/02/2026
-**Fecha Cierre del Sprint:** Jueves 05/02/2026
+**Fecha Inicio del Sprint:** Lunes 16/02/2026
+**Fecha Cierre del Sprint:** Viernes 20/02/2026
 **Estado:** ✅ Finalizado
 **Scrum Master (Acting):** Analista Programadora C# [Beatriz Ebert Desarrolladora .NET ](https://github.com/Beaebert)
 
 ## 🎯 Objetivo del Sprint
-Comprender los requerimientos del desafío "Justina", conformar el equipo de trabajo y conocer el dominio de conocimiento de los miembros del equipo, definir el stack tecnológico. Definir la arquitectura del software y su lugar a habitar (local o nube).
+Pivotar el desarrollo del Frontend hacia **Radzen Blazor Studio** debido a la baja de la desarrolladora No-Code. Reorganizar al equipo y continuar el desarrollo del core y la interfaz con los recursos disponibles, adaptándonos a la reducción del equipo.
 
 ## 📅 Bitácora Diaria (Daily Log)
 
-### Lunes 16/02 -
+### Lunes 16/02 - Análisis de la situación actual
 * **Actividad:**
-    * Analisis de la situación actual del proyecto.
+    * Análisis de la situación actual del proyecto.
     * Investigación y evaluación si se fusiona Back End y Front End en una sola aplicación Radzen Blazor Studio.
     * Se revisa el estado de los repositorios de GitHub.
     * Se considera mantener separados el Back End y Front End para garantizar independencia del Front End en caso que los stakeholders decidan cambiar de herramientas visuales.
-    
 * **Resultados:**
-    * Se definió el stack tecnológico.
+    * Se definió el nuevo stack tecnológico definitivo: Backend en C# y Frontend en Radzen Blazor.
 
-## 📊 Retrospectiva del Sprint 01
+### Semana del 17/02 al 20/02 - Reorganización del Equipo
+* **Actividad:**
+    * Oficializamos la reducción del equipo. Actualmente contamos con dos diseñadores UX/UI (Lara Almirón y Cristian Dal Piva) y una analista desarrolladora (Beatriz Ebert). 
+    * El equipo va a un ritmo más lento debido a esta reducción.
+    * El único desarrollador activo mediante vibe coding es Beatriz Ebert (Analista Programadora con stack .NET).
+    * Beatriz, al continuar paralelamente con sus estudios universitarios, se encuentra con el tiempo limitado, lo que ha generado atrasos lógicos en su cronograma, pero continúa su desarrollo en C# y Blazor.
+
+## 📊 Retrospectiva del Sprint 03
 
 ### 👍 Lo que hicimos bien (Start doing)
-* 
+* Tomar la decisión rápida de pivotar a Blazor para no depender de herramientas externas sin responsables.
+* Ser transparentes con los tiempos de desarrollo debido a la situación académica del desarrollador.
 
 ### 👎 Lo que debemos mejorar (Stop doing)
-*
-
+* 
 
 ## ⏭️ Plan para Sprint 04 (Lunes 23/02)
-1.  **C#:** Codificar clase `SurgicalRobot` y lógica de colisión (Vibe Coding).
-2.  **No-Code:** Definir herramienta final (Bubble vs FlutterFlow) tras prueba de exportación.
-3.  **UX:** Entregar Mockup de "Pantalla de Cirugía" con medidas (X,Y).
-4.  **Integración:** Definir contrato JSON final para Data Engineer.
+1.  **C# y Blazor:** Continuar el desarrollo del simulador en la medida del tiempo disponible.
+2.  **Presentación Final:** Comenzar a organizar las Slides de Google para el video y la reunión de cierre.
