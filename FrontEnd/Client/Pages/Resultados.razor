@@ -1,0 +1,77 @@
+@page "/resultados"
+@inject NavigationManager NavManager
+
+<RadzenStack AlignItems="AlignItems.Center" Class="rz-my-4">
+    <div style="background-color: #dcfce7; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+        <RadzenIcon Icon="emoji_events" Style="font-size: 3rem; color: #10b981;" />
+    </div>
+    
+    <RadzenText Text="Simulación Completada" TextStyle="TextStyle.H3" Style="font-weight: 800; color: #1e293b; margin: 0;" />
+    <RadzenText Text="Sutura Renal - Nivel Básico" TextStyle="TextStyle.Subtitle1" Style="color: #64748b;" />
+</RadzenStack>
+
+<RadzenRow Gap="2rem" Class="rz-mt-4">
+    <RadzenColumn Size="12" SizeMD="4">
+        <RadzenCard Style="text-align: center; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <RadzenText Text="Precisión Global" TextStyle="TextStyle.H6" Style="color: #64748b;" />
+            <RadzenText Text="92%" TextStyle="TextStyle.DisplayH2" Style="font-weight: 900; color: #3b82f6; margin: 10px 0;" />
+            <RadzenBadge Text="Nivel: Excelente" BadgeStyle="BadgeStyle.Success" Style="font-size: 1rem; padding: 8px 16px; border-radius: 20px; align-self: center;" />
+        </RadzenCard>
+    </RadzenColumn>
+
+    <RadzenColumn Size="12" SizeMD="8">
+        <RadzenCard Style="padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+            <RadzenText Text="Análisis de Rendimiento" TextStyle="TextStyle.H6" Style="font-weight: 700; color: #1e293b; margin-bottom: 1.5rem;" />
+
+            <RadzenStack Class="rz-mb-3">
+                <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.SpaceBetween">
+                    <RadzenText Text="Control de Tensión de Sutura" TextStyle="TextStyle.Body1" Style="font-weight: 600;" />
+                    <RadzenText Text="95%" TextStyle="TextStyle.Body1" Style="color: #10b981; font-weight: bold;" />
+                </RadzenStack>
+                <RadzenProgressBar Value="95" ShowValue="false" Style="height: 10px; border-radius: 5px;" />
+            </RadzenStack>
+
+            <RadzenStack Class="rz-mb-3">
+                <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.SpaceBetween">
+                    <RadzenText Text="Tiempo en Zona Segura" TextStyle="TextStyle.Body1" Style="font-weight: 600;" />
+                    <RadzenText Text="88%" TextStyle="TextStyle.Body1" Style="color: #3b82f6; font-weight: bold;" />
+                </RadzenStack>
+                <RadzenProgressBar Value="88" ShowValue="false" Style="height: 10px; border-radius: 5px;" />
+            </RadzenStack>
+
+            <RadzenStack Class="rz-mb-4">
+                <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.SpaceBetween">
+                    <RadzenText Text="Economía de Movimiento" TextStyle="TextStyle.Body1" Style="font-weight: 600;" />
+                    <RadzenText Text="76%" TextStyle="TextStyle.Body1" Style="color: #f59e0b; font-weight: bold;" />
+                </RadzenStack>
+                <RadzenProgressBar Value="76" ShowValue="false" ProgressBarStyle="ProgressBarStyle.Warning" Style="height: 10px; border-radius: 5px;" />
+            </RadzenStack>
+
+            <RadzenRow Gap="1rem" Style="background-color: #f8fafc; padding: 15px; border-radius: 12px;">
+                <RadzenColumn Size="4" Style="text-align: center;">
+                    <RadzenText Text="Tiempo Total" TextStyle="TextStyle.Caption" Style="color: #64748b; display: block;" />
+                    <RadzenText Text="14:23" TextStyle="TextStyle.Subtitle1" Style="font-weight: bold; color: #1e293b;" />
+                </RadzenColumn>
+                <RadzenColumn Size="4" Style="text-align: center; border-left: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0;">
+                    <RadzenText Text="Colisiones" TextStyle="TextStyle.Caption" Style="color: #64748b; display: block;" />
+                    <RadzenText Text="2" TextStyle="TextStyle.Subtitle1" Style="font-weight: bold; color: #ef4444;" />
+                </RadzenColumn>
+                <RadzenColumn Size="4" Style="text-align: center;">
+                    <RadzenText Text="Puntaje UX" TextStyle="TextStyle.Caption" Style="color: #64748b; display: block;" />
+                    <RadzenText Text="A" TextStyle="TextStyle.Subtitle1" Style="font-weight: bold; color: #10b981;" />
+                </RadzenColumn>
+            </RadzenRow>
+        </RadzenCard>
+    </RadzenColumn>
+</RadzenRow>
+
+<RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem" Class="rz-mt-5">
+    <RadzenButton Text="Volver al Dashboard" ButtonStyle="ButtonStyle.Light" Style="padding: 10px 30px; border-radius: 8px; font-weight: 600;" Click="@(() => NavManager.NavigateTo("/"))" />
+    <RadzenButton Text="Reintentar Simulación" ButtonStyle="ButtonStyle.Primary" Style="padding: 10px 30px; border-radius: 8px; font-weight: 600;" Click="@(() => NavManager.NavigateTo("/simulador"))" />
+</RadzenStack>
+
+@code {
+    // Aquí es donde en el futuro (cuando integremos 100% el backend)
+    // recibiremos las variables reales de la simulación recién terminada.
+    // Por ahora, usamos datos duros para el MVP visual.
+}

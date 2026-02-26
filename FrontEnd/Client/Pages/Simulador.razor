@@ -1,0 +1,211 @@
+@page "/simulador"
+@inject NavigationManager NavManager
+
+<div style="margin-bottom: 20px; cursor: pointer;" @onclick="@(() => NavManager.NavigateTo("/seleccion"))">
+    <RadzenText Text="← Volver a selección" TextStyle="TextStyle.Subtitle2" Style="color: #3b82f6;" />
+</div>
+
+<RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.SpaceBetween" AlignItems="AlignItems.Center" Class="rz-mb-4">
+    <RadzenText Text="Sutura Renal - Simulación" TextStyle="TextStyle.H3" Style="font-weight: bold; color: #1e293b; margin: 0;" />
+    <RadzenText Text="@tiempoFormateado" TextStyle="TextStyle.H4" Style="font-family: monospace; font-weight: bold; color: #1e293b; margin: 0; letter-spacing: 2px;" />
+</RadzenStack>
+
+<RadzenRow Gap="1rem" Class="rz-mb-4">
+    <RadzenColumn Size="4">
+        <RadzenCard Style="padding: 15px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+            <RadzenText Text="Paso Actual" TextStyle="TextStyle.Caption" Style="color: #94a3b8;" />
+            <RadzenText Text="@($"{pasoActual} / 6")" TextStyle="TextStyle.H5" Style="font-weight: bold; color: #1e293b; margin: 0;" />
+        </RadzenCard>
+    </RadzenColumn>
+    <RadzenColumn Size="4">
+        <RadzenCard Style="padding: 15px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+            <RadzenText Text="Estado de Zona" TextStyle="TextStyle.Caption" Style="color: #94a3b8;" />
+            <RadzenText Text="@estadoZona" TextStyle="TextStyle.H6" Style="@($"font-weight: bold; margin: 0; color: {colorEstadoZona};")" />
+        </RadzenCard>
+    </RadzenColumn>
+    <RadzenColumn Size="4">
+        <RadzenCard Style="padding: 15px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+            <RadzenText Text="Sistema" TextStyle="TextStyle.Caption" Style="color: #94a3b8;" />
+            <RadzenStack Orientation="Orientation.Horizontal" Gap="5px" AlignItems="AlignItems.Center">
+                <RadzenIcon Icon="@(simulacionActiva ? "play_circle" : "pause_circle")" Style="@($"color: {(simulacionActiva ? "#10b981" : "#3b82f6")};")" />
+                <RadzenText Text="@(simulacionActiva ? "Activo" : "En Espera")" TextStyle="TextStyle.H6" Style="@($"font-weight: bold; margin: 0; color: {(simulacionActiva ? "#10b981" : "#3b82f6")};")" />
+            </RadzenStack>
+        </RadzenCard>
+    </RadzenColumn>
+</RadzenRow>
+
+<RadzenRow Gap="1.5rem">
+    <RadzenColumn Size="12" SizeMD="8">
+        
+        <div style="background-color: #0f172a; border-radius: 12px; height: 500px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 30px rgba(0,0,0,0.8); border: 2px solid @colorBordeCanvas; cursor: @(simulacionActiva ? "none" : "default");"
+             @onmousemove="MoverCursor" 
+             @onclick="AvanzarPaso">
+             
+            @if (!simulacionActiva)
+            {
+                <RadzenStack AlignItems="AlignItems.Center" Gap="20px">
+                    <RadzenIcon Icon="medical_services" Style="font-size: 5rem; color: #38bdf8;" />
+                    <RadzenText Text="Campo Quirúrgico Listo" TextStyle="TextStyle.H5" Style="color: white; font-weight: 600;" />
+                    <RadzenText Text="Ubique el puntero en esta área y presione iniciar." TextStyle="TextStyle.Body2" Style="color: #94a3b8;" />
+                    <RadzenButton Text="Iniciar Procedimiento" ButtonStyle="ButtonStyle.Success" Style="padding: 12px 35px; font-size: 1.1rem; border-radius: 8px; font-weight: bold; margin-top: 10px;" Click="IniciarSimulacion" />
+                </RadzenStack>
+            }
+            else
+            {
+                <div style="position: absolute; top: 20px; left: 20px; background-color: rgba(30, 41, 59, 0.8); color: #cbd5e1; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; border: 1px solid #334155;">
+                    REC 🔴 - Tracking Activo
+                </div>
+
+                <div style="width: 380px; height: 380px; background-color: rgba(239, 68, 68, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; border: 1px dashed rgba(239, 68, 68, 0.3);">
+                    <div style="width: 260px; height: 260px; background-color: rgba(245, 158, 11, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px dashed rgba(245, 158, 11, 0.4);">
+                        <div style="width: 140px; height: 140px; background-color: rgba(16, 185, 129, 0.2); border-radius: 50%; border: 2px solid rgba(16, 185, 129, 0.5);"></div>
+                    </div>
+                </div>
+
+                @if(mouseX == 0 && mouseY == 0)
+                {
+                    <div style="position: absolute; bottom: 40px; background-color: rgba(30, 41, 59, 0.9); color: white; padding: 15px 25px; border-radius: 12px; text-align: center; pointer-events: none; border: 1px solid #475569;">
+                        <RadzenText Text="Mueva el mouse para navegar" TextStyle="TextStyle.Body2" Style="color: #38bdf8; margin: 0;" />
+                        <RadzenText Text="Haga clic para completar el paso actual" TextStyle="TextStyle.Caption" Style="color: #94a3b8; margin: 0;" />
+                    </div>
+                }
+
+                <div style="position: absolute; left: @(mouseX - 6)px; top: @(mouseY - 6)px; width: 12px; height: 12px; background-color: #38bdf8; border-radius: 50%; border: 2px solid white; pointer-events: none; box-shadow: 0 0 15px #38bdf8;"></div>
+            }
+        </div>
+    </RadzenColumn>
+
+    <RadzenColumn Size="12" SizeMD="4">
+        
+        <RadzenCard Class="rz-mb-4" Style="border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+            <RadzenText Text="Instrumental Robótico" TextStyle="TextStyle.Subtitle1" Style="font-weight: bold; margin-bottom: 15px; color: #1e293b;" />
+            <RadzenStack Gap="10px">
+                <RadzenButton Text="Pinza de Prensión" Icon="pan_tool" ButtonStyle="@(herramienta == 1 ? ButtonStyle.Light : ButtonStyle.Base)" Style="@($"width: 100%; justify-content: flex-start; border: 1px solid {(herramienta == 1 ? "#3b82f6" : "#e2e8f0")};")" Click="() => herramienta = 1" />
+                <RadzenButton Text="Tijeras" Icon="content_cut" ButtonStyle="@(herramienta == 2 ? ButtonStyle.Light : ButtonStyle.Base)" Style="@($"width: 100%; justify-content: flex-start; color: #ef4444; border: 1px solid {(herramienta == 2 ? "#ef4444" : "#e2e8f0")};")" Click="() => herramienta = 2" />
+                <RadzenButton Text="Cauterio" Icon="bolt" ButtonStyle="@(herramienta == 3 ? ButtonStyle.Light : ButtonStyle.Base)" Style="@($"width: 100%; justify-content: flex-start; color: #f59e0b; border: 1px solid {(herramienta == 3 ? "#f59e0b" : "#e2e8f0")};")" Click="() => herramienta = 3" />
+                <RadzenButton Text="Porta-agujas" Icon="colorize" ButtonStyle="@(herramienta == 4 ? ButtonStyle.Light : ButtonStyle.Base)" Style="@($"width: 100%; justify-content: flex-start; color: #3b82f6; border: 1px solid {(herramienta == 4 ? "#3b82f6" : "#e2e8f0")};")" Click="() => herramienta = 4" />
+            </RadzenStack>
+        </RadzenCard>
+
+        <RadzenCard Style="border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+            <RadzenText Text="Protocolo Quirúrgico" TextStyle="TextStyle.Subtitle1" Style="font-weight: bold; margin-bottom: 15px; color: #1e293b;" />
+            
+            <RadzenStack Gap="10px">
+                @for (int i = 0; i < pasos.Count; i++)
+                {
+                    int index = i + 1;
+                    if (index < pasoActual)
+                    {
+                        <div style="background-color: #dcfce7; color: #166534; padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 10px;">
+                            <RadzenIcon Icon="check_circle" Style="font-size: 1.2rem;" /> @pasos[i]
+                        </div>
+                    }
+                    else if (index == pasoActual && simulacionActiva)
+                    {
+                        <div style="background-color: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; font-weight: bold; display: flex; align-items: center; gap: 10px; box-shadow: 0 0 8px rgba(59,130,246,0.3);">
+                            <RadzenIcon Icon="arrow_forward_ios" Style="font-size: 1rem; color: #3b82f6;" /> @pasos[i]
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="background-color: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 10px;">
+                            <span style="font-weight: bold; width: 20px; text-align: center;">@index</span> @pasos[i]
+                        </div>
+                    }
+                }
+            </RadzenStack>
+        </RadzenCard>
+    </RadzenColumn>
+</RadzenRow>
+
+@code {
+    // 1. VARIABLES DE ESTADO Y UI
+    bool simulacionActiva = false;
+    int pasoActual = 1;
+    int herramienta = 4; // Por defecto empezamos con Porta-agujas
+    
+    // UI Feedback
+    string estadoZona = "Segura";
+    string colorEstadoZona = "#10b981"; // Verde
+    string colorBordeCanvas = "#1e293b"; // Gris oscuro normal
+
+    // 2. VARIABLES DEL CRONÓMETRO
+    int segundosTranscurridos = 0;
+    string tiempoFormateado = "00:00";
+    System.Threading.Timer temporizador;
+
+    // 3. TRACKING DEL MOUSE
+    double mouseX = 0;
+    double mouseY = 0;
+
+    // 4. LISTA DE PASOS
+    List<string> pasos = new List<string>
+    {
+        "Preparación del campo",
+        "Primera línea de sutura",
+        "Sutura hemostática",
+        "Segunda línea de refuerzo",
+        "Verificación de hermeticidad",
+        "Finalización y retiro"
+    };
+
+    // MÉTODOS DEL COMPONENTE
+    void IniciarSimulacion()
+    {
+        simulacionActiva = true;
+        pasoActual = 1;
+        
+        // Iniciamos el cronómetro (1 tick cada 1000 milisegundos)
+        temporizador = new System.Threading.Timer(ActualizarReloj, null, 0, 1000);
+    }
+
+    void ActualizarReloj(object state)
+    {
+        segundosTranscurridos++;
+        int minutos = segundosTranscurridos / 60;
+        int segundos = segundosTranscurridos % 60;
+        tiempoFormateado = $"{minutos:D2}:{segundos:D2}";
+        
+        // Obliga a Blazor a re-dibujar la UI desde un hilo secundario
+        InvokeAsync(StateHasChanged);
+    }
+
+    void MoverCursor(MouseEventArgs e)
+    {
+        if (simulacionActiva)
+        {
+            mouseX = e.OffsetX;
+            mouseY = e.OffsetY;
+            
+            // ==========================================
+            // AQUI OCURRE LA MAGIA DEL BACKEND (Próximo paso)
+            // Cuando habilitemos el CORS, aquí haremos:
+            // await Http.PostAsJsonAsync("api/pointer/move", new { X = mouseX, Y = mouseY });
+            // ==========================================
+        }
+    }
+
+    void AvanzarPaso()
+    {
+        // El cirujano hace clic para confirmar un paso
+        if (simulacionActiva && pasoActual < 6)
+        {
+            pasoActual++;
+        }
+        else if (simulacionActiva && pasoActual == 6)
+        {
+            // Fin de la cirugía
+            simulacionActiva = false;
+            temporizador?.Dispose();
+            
+            // Navegamos a la pantalla de Resultados
+            NavManager.NavigateTo("/resultados");
+        }
+    }
+
+    // Limpieza de memoria al salir de la página
+    public void Dispose()
+    {
+        temporizador?.Dispose();
+    }
+}

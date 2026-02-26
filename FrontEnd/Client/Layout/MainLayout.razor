@@ -1,0 +1,51 @@
+@inherits LayoutComponentBase
+@inject NavigationManager NavManager
+
+<div style="min-height: 100vh; background-color: #f8fafc; display: flex; flex-direction: column; overflow-x: hidden;">
+    
+    <header style="background-color: #1e293b; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.2); width: 100%; box-sizing: border-box; z-index: 10;">
+        
+        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="10px" Style="cursor: pointer;" @onclick="@(() => NavManager.NavigateTo("/"))">
+            <RadzenIcon Icon="health_and_safety" Style="color: #3b82f6; font-size: 2rem;" />
+            <RadzenText Text="JUSTINA" TextStyle="TextStyle.H5" Style="color: white; font-weight: 800; margin: 0; letter-spacing: 1px;" />
+            <RadzenBadge Text="MVP" BadgeStyle="BadgeStyle.Info" Style="margin-left: 10px; font-size: 0.7rem;" />
+        </RadzenStack>
+
+        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="15px">
+            
+            <div class="d-none d-md-block" style="text-align: right;">
+                <RadzenText Text="Dr. Juan Pérez" TextStyle="TextStyle.Subtitle2" Style="color: white; margin: 0; font-weight: bold;" />
+                <RadzenText Text="Cirujano Urólogo" TextStyle="TextStyle.Caption" Style="color: #94a3b8; margin: 0;" />
+            </div>
+            
+        <RadzenButton Icon="@(esModoOscuro ? "light_mode" : "dark_mode")" 
+              ButtonStyle="ButtonStyle.Light" Variant="Variant.Text" 
+              Style="color: white; border-radius: 50%; width: 40px; height: 40px;" 
+              Click="AlternarTema" />
+
+            <div @onclick="@(() => NavManager.NavigateTo("/perfil"))" 
+                 style="width: 40px; height: 40px; background-color: #3b82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; border: 2px solid #60a5fa; transition: transform 0.2s;"
+                 onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                JP
+            </div>
+
+        </RadzenStack>
+    </header>
+
+    <main style="flex: 1; padding: 20px; width: 100%; box-sizing: border-box;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            @Body
+        </div>
+    </main>
+    @code {
+    bool esModoOscuro = false; // Empezamos en modo claro por defecto
+
+    private async Task AlternarTema()
+    {
+        esModoOscuro = !esModoOscuro;
+        // Llamamos al script que pusimos en App.razor
+        await JSRuntime.InvokeVoidAsync("cambiarTema", esModoOscuro);
+    }
+}
+
+</div>

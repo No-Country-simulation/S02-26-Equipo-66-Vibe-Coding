@@ -1,0 +1,126 @@
+@page "/seleccion"
+@inject NavigationManager NavManager
+
+<div style="margin-bottom: 20px; cursor: pointer;" @onclick="Volver">
+    <RadzenText Text="← Volver al Dashboard" TextStyle="TextStyle.Subtitle2" Style="color: #3b82f6;" />
+</div>
+
+<RadzenText Text="Seleccionar Tipo de Simulación" TextStyle="TextStyle.H4" Style="font-weight: 800; color: #1e293b;" />
+<RadzenText Text="Elige el procedimiento que deseas practicar" TextStyle="TextStyle.Body1" Style="color: #64748b; margin-bottom: 30px;" />
+
+<RadzenRow Gap="1.5rem">
+    @foreach (var item in simulaciones)
+    {
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="4">
+            <RadzenCard Style="padding: 0; border-radius: 16px; overflow: hidden; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.05); height: 100%;">
+                
+                <div style="background-color: @item.ColorFondo; height: 140px; display: flex; align-items: center; justify-content: center;">
+                    <RadzenIcon Icon="@item.Icono" Style="@($"font-size: 4rem; color: {item.ColorTexto};")" />
+                </div>
+
+                <div style="padding: 24px;">
+                    
+                    <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.SpaceBetween" AlignItems="AlignItems.Center" Class="rz-mb-2">
+                        <RadzenText Text="@item.Titulo" TextStyle="TextStyle.H6" Style="font-weight: 700; color: #1e293b; margin: 0; font-size: 1.1rem;" />
+                        
+                        <span style="background-color: @item.ColorTexto; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">
+                            @item.Dificultad
+                        </span>
+                    </RadzenStack>
+
+                    <RadzenText Text="@item.Descripcion" TextStyle="TextStyle.Body2" Style="color: #64748b; height: 42px; overflow: hidden; line-height: 1.4;" />
+
+                    <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="6px" Style="margin-top: 16px; margin-bottom: 20px;">
+                        <RadzenIcon Icon="timer" Style="color: #94a3b8; font-size: 1rem;" />
+                        <RadzenText Text="@item.Duracion" TextStyle="TextStyle.Caption" Style="color: #64748b; font-weight: 500;" />
+                    </RadzenStack>
+
+                    <RadzenButton Text="Iniciar Simulación" 
+                                  ButtonStyle="ButtonStyle.Primary" 
+                                  Style="width: 100%; border-radius: 8px; font-weight: 600; background-color: #3b82f6;"
+                                  Click="@(() => Iniciar(item))" />
+                </div>
+            </RadzenCard>
+        </RadzenColumn>
+    }
+</RadzenRow>
+
+@code {
+    // Clase simple para definir los datos de cada tarjeta
+    class SimCard 
+    {
+        public string Titulo { get; set; }
+        public string Descripcion { get; set; }
+        public string Dificultad { get; set; }
+        public string Duracion { get; set; }
+        public string Icono { get; set; }
+        public string ColorFondo { get; set; } // El pastel suave
+        public string ColorTexto { get; set; } // El color fuerte del badge/icono
+    }
+
+    List<SimCard> simulaciones = new List<SimCard>();
+
+    protected override void OnInitialized()
+    {
+        simulaciones = new List<SimCard>
+        {
+            new SimCard { 
+                Titulo = "Nefrectomía Parcial", 
+                Descripcion = "Extracción quirúrgica de la parte del riñón que contiene el tumor.",
+                Dificultad = "Avanzado", 
+                Duracion = "25-35 min",
+                Icono = "favorite", // Icono Corazón
+                ColorFondo = "#ffe4e6", // Rosa pastel
+                ColorTexto = "#e11d48"  // Rosa fuerte
+            },
+            new SimCard { 
+                Titulo = "Resección de Tumor", 
+                Descripcion = "Extirpación precisa del tumor renal con conservación de tejido.",
+                Dificultad = "Intermedio", 
+                Duracion = "20-30 min",
+                Icono = "biotech", // Icono Microscopio
+                ColorFondo = "#ffedd5", // Naranja pastel
+                ColorTexto = "#f97316"  // Naranja fuerte
+            },
+            new SimCard { 
+                Titulo = "Sutura Renal", 
+                Descripcion = "Técnica de cierre y reconstrucción del tejido renal.",
+                Dificultad = "Básico", 
+                Duracion = "15-20 min",
+                Icono = "healing", // Icono Hilo/Aguja
+                ColorFondo = "#dcfce7", // Verde pastel
+                ColorTexto = "#10b981"  // Verde fuerte
+            },
+            new SimCard { 
+                Titulo = "Pieloplastia Robótica", 
+                Descripcion = "Reconstrucción de la unión ureteropélvica.",
+                Dificultad = "Avanzado", 
+                Duracion = "30-40 min",
+                Icono = "construction", // Icono Grúa
+                ColorFondo = "#f3e8ff", // Violeta pastel
+                ColorTexto = "#9333ea"  // Violeta fuerte
+            },
+            new SimCard { 
+                Titulo = "Adrenalectomía", 
+                Descripcion = "Extirpación de glándula suprarrenal.",
+                Dificultad = "Intermedio", 
+                Duracion = "20-25 min",
+                Icono = "science", // Icono Matraz
+                ColorFondo = "#e0f2fe", // Azul pastel
+                ColorTexto = "#0ea5e9"  // Azul fuerte
+            },
+             new SimCard { 
+                Titulo = "Cistectomía Parcial", 
+                Descripcion = "Resección parcial de vejiga con preservación de función.",
+                Dificultad = "Avanzado", 
+                Duracion = "35-45 min",
+                Icono = "medical_services", // Icono Estetoscopio
+                ColorFondo = "#fee2e2", // Rojo suave
+                ColorTexto = "#ef4444"  // Rojo fuerte
+            }
+        };
+    }
+
+    void Volver() => NavManager.NavigateTo("/");
+    void Iniciar(SimCard item) => NavManager.NavigateTo("/simulador");
+}

@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "GgicDfnn604=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ebert\\Documents\\JustinaSimulation\\Server\\JustinaSimulation.Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ebert\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.3\\microsoft.aspnetcore.app.internal.assets.10.0.3.nupkg.sha512",
+    "C:\\Users\\ebert\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\10.0.3\\microsoft.aspnetcore.components.webassembly.10.0.3.nupkg.sha512",
+    "C:\\Users\\ebert\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\10.0.3\\microsoft.aspnetcore.components.webassembly.authentication.10.0.3.nupkg.sha512",
+    "C:\\Users\\ebert\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.server\\10.0.3\\microsoft.aspnetcore.components.webassembly.server.10.0.3.nupkg.sha512",
+    "C:\\Users\\ebert\\.nuget\\packages\\microsoft.dotnet.hotreload.webassembly.browser\\10.0.103\\microsoft.dotnet.hotreload.webassembly.browser.10.0.103.nupkg.sha512",
+    "C:\\Users\\ebert\\.nuget\\packages\\microsoft.jsinterop.webassembly\\10.0.3\\microsoft.jsinterop.webassembly.10.0.3.nupkg.sha512",
+    "C:\\Users\\ebert\\.nuget\\packages\\radzen.blazor\\9.0.6\\radzen.blazor.9.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}

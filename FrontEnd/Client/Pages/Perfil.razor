@@ -1,0 +1,92 @@
+@page "/perfil"
+@inject NavigationManager NavManager
+
+<div style="margin-bottom: 20px; cursor: pointer;" @onclick="@(() => NavManager.NavigateTo("/"))">
+    <RadzenText Text="← Volver al Dashboard" TextStyle="TextStyle.Subtitle2" Style="color: #3b82f6;" />
+</div>
+
+<RadzenText Text="Mi Perfil" TextStyle="TextStyle.H4" Style="font-weight: 800; color: #1e293b; margin-bottom: 30px;" />
+
+<RadzenRow Gap="2rem">
+    <RadzenColumn Size="12" SizeMD="4">
+        <RadzenCard Style="text-align: center; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+            
+            <div style="width: 120px; height: 120px; background-color: #3b82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; font-weight: bold; margin: 0 auto 20px auto; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);">
+                JP
+            </div>
+            
+            <RadzenText Text="Dr. Juan Pérez" TextStyle="TextStyle.H5" Style="font-weight: 700; color: #1e293b; margin-bottom: 5px;" />
+            <RadzenText Text="Cirujano Urólogo" TextStyle="TextStyle.Subtitle1" Style="color: #64748b; margin-bottom: 25px;" />
+            
+            <RadzenStack Gap="15px" Style="text-align: left; background-color: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
+                <div>
+                    <RadzenText Text="Institución" TextStyle="TextStyle.Caption" Style="color: #94a3b8; display: block; margin-bottom: 2px;" />
+                    <RadzenText Text="Hospital de Clínicas" TextStyle="TextStyle.Body2" Style="font-weight: 600; color: #1e293b;" />
+                </div>
+                <div>
+                    <RadzenText Text="ID Médico" TextStyle="TextStyle.Caption" Style="color: #94a3b8; display: block; margin-bottom: 2px;" />
+                    <RadzenText Text="MED-2026-8891" TextStyle="TextStyle.Body2" Style="font-weight: 600; color: #1e293b;" />
+                </div>
+            </RadzenStack>
+            
+            <RadzenButton Text="Editar Perfil" ButtonStyle="ButtonStyle.Light" Style="width: 100%; margin-top: 20px; border-radius: 8px; font-weight: 600;" />
+        </RadzenCard>
+    </RadzenColumn>
+
+    <RadzenColumn Size="12" SizeMD="8">
+        
+        <RadzenRow Gap="1rem" Class="rz-mb-4">
+            <RadzenColumn Size="6">
+                <RadzenCard Style="padding: 1.5rem; border-radius: 12px; border-left: 4px solid #3b82f6; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+                    <RadzenText Text="Horas de Simulación" TextStyle="TextStyle.Caption" Style="color: #64748b;" />
+                    <RadzenText Text="42.5 hrs" TextStyle="TextStyle.H4" Style="font-weight: 700; color: #1e293b; margin: 0;" />
+                </RadzenCard>
+            </RadzenColumn>
+            <RadzenColumn Size="6">
+                <RadzenCard Style="padding: 1.5rem; border-radius: 12px; border-left: 4px solid #10b981; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+                    <RadzenText Text="Procedimientos Exitosos" TextStyle="TextStyle.Caption" Style="color: #64748b;" />
+                    <RadzenText Text="128" TextStyle="TextStyle.H4" Style="font-weight: 700; color: #1e293b; margin: 0;" />
+                </RadzenCard>
+            </RadzenColumn>
+        </RadzenRow>
+
+        <RadzenCard Style="padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+            <RadzenText Text="Certificaciones y Logros" TextStyle="TextStyle.H6" Style="font-weight: 700; color: #1e293b; margin-bottom: 1.5rem;" />
+            
+            <RadzenStack Gap="15px">
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; border: 1px solid #bbf7d0; border-radius: 12px; background-color: #f0fdf4;">
+                    <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="15px">
+                        <RadzenIcon Icon="verified" Style="font-size: 2rem; color: #10b981;" />
+                        <div>
+                            <RadzenText Text="Sutura Renal Básica" TextStyle="TextStyle.Body1" Style="font-weight: 600; margin: 0; color: #166534;" />
+                            <RadzenText Text="Completado el 15/02/2026" TextStyle="TextStyle.Caption" Style="color: #15803d;" />
+                        </div>
+                    </RadzenStack>
+                    <RadzenBadge Text="Certificado" BadgeStyle="BadgeStyle.Success" Style="padding: 6px 12px; border-radius: 15px;" />
+                </div>
+
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; border: 1px solid #bbf7d0; border-radius: 12px; background-color: #f0fdf4;">
+                    <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="15px">
+                        <RadzenIcon Icon="verified" Style="font-size: 2rem; color: #10b981;" />
+                        <div>
+                            <RadzenText Text="Nefrectomía Parcial" TextStyle="TextStyle.Body1" Style="font-weight: 600; margin: 0; color: #166534;" />
+                            <RadzenText Text="Completado el 20/02/2026" TextStyle="TextStyle.Caption" Style="color: #15803d;" />
+                        </div>
+                    </RadzenStack>
+                    <RadzenBadge Text="Certificado" BadgeStyle="BadgeStyle.Success" Style="padding: 6px 12px; border-radius: 15px;" />
+                </div>
+
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #f8fafc;">
+                    <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="15px">
+                        <RadzenIcon Icon="pending" Style="font-size: 2rem; color: #94a3b8;" />
+                        <div>
+                            <RadzenText Text="Pieloplastia Robótica Avanzada" TextStyle="TextStyle.Body1" Style="font-weight: 600; margin: 0; color: #334155;" />
+                            <RadzenText Text="Progreso: 45%" TextStyle="TextStyle.Caption" Style="color: #64748b;" />
+                        </div>
+                    </RadzenStack>
+                    <RadzenBadge Text="En Progreso" BadgeStyle="BadgeStyle.Light" Style="padding: 6px 12px; border-radius: 15px;" />
+                </div>
+            </RadzenStack>
+        </RadzenCard>
+    </RadzenColumn>
+</RadzenRow>

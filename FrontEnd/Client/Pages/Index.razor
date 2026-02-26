@@ -1,0 +1,108 @@
+@page "/"
+
+<RadzenText Text="Bienvenido de nuevo, Dr. Pérez" TextStyle="TextStyle.H4" Style="color: #1f2937; font-weight: bold;" />
+<RadzenText Text="Continúa tu entrenamiento en cirugía renal robótica" TextStyle="TextStyle.Body1" Style="color: #6b7280; margin-bottom: 20px;" />
+
+<RadzenRow Gap="1rem" Class="rz-mb-4">
+    <RadzenColumn Size="3">
+        <RadzenCard Style="border-left: 5px solid #3b82f6;"> <RadzenText Text="24" TextStyle="TextStyle.DisplayH4" Style="margin: 0; font-weight: bold;" />
+            <RadzenText Text="Simulaciones Completadas" TextStyle="TextStyle.Caption" Style="color: #6b7280;" />
+        </RadzenCard>
+    </RadzenColumn>
+    <RadzenColumn Size="3">
+        <RadzenCard Style="border-left: 5px solid #10b981;"> <RadzenText Text="87%" TextStyle="TextStyle.DisplayH4" Style="margin: 0; font-weight: bold;" />
+            <RadzenText Text="Puntuación Promedio" TextStyle="TextStyle.Caption" Style="color: #6b7280;" />
+        </RadzenCard>
+    </RadzenColumn>
+    <RadzenColumn Size="3">
+        <RadzenCard Style="border-left: 5px solid #f59e0b;"> <RadzenText Text="18m" TextStyle="TextStyle.DisplayH4" Style="margin: 0; font-weight: bold;" />
+            <RadzenText Text="Tiempo Promedio Isquemia" TextStyle="TextStyle.Caption" Style="color: #6b7280;" />
+        </RadzenCard>
+    </RadzenColumn>
+    <RadzenColumn Size="3">
+        <RadzenCard Style="border-left: 5px solid #8b5cf6;"> <RadzenText Text="#12" TextStyle="TextStyle.DisplayH4" Style="margin: 0; font-weight: bold;" />
+            <RadzenText Text="Ranking Global" TextStyle="TextStyle.Caption" Style="color: #6b7280;" />
+        </RadzenCard>
+    </RadzenColumn>
+</RadzenRow>
+
+<RadzenRow Gap="1rem">
+    <RadzenColumn Size="8">
+        
+        <RadzenCard Class="rz-mb-4">
+            <RadzenText Text="Nueva Simulación" TextStyle="TextStyle.H6" Style="font-weight: bold;" />
+            <RadzenButton Text="Iniciar Simulación" Icon="sports_esports" 
+                          ButtonStyle="ButtonStyle.Primary" 
+                          Style="width: 100%; margin-top: 10px; height: 50px; font-size: 1.2rem;"
+                          Click=@IrAlSimulador />
+        </RadzenCard>
+
+        <RadzenText Text="Simulaciones Recientes" TextStyle="TextStyle.H6" Style="color: #6b7280; margin-bottom: 10px;" />
+        
+        @foreach (var sim in simulaciones)
+        {
+            <RadzenCard Style="margin-bottom: 10px; padding: 10px;">
+                <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">
+                    <RadzenStack Gap="0">
+                        <RadzenText Text="@sim.Nombre" TextStyle="TextStyle.Subtitle2" Style="font-weight: bold; margin: 0;" />
+                        <RadzenText Text="@sim.Fecha" TextStyle="TextStyle.Caption" Style="color: #9ca3af;" />
+                    </RadzenStack>
+                    <RadzenBadge Text="@(sim.Puntaje + "%")" BadgeStyle="@GetColor(sim.Puntaje)" />
+                </RadzenStack>
+            </RadzenCard>
+        }
+    </RadzenColumn>
+
+    <RadzenColumn Size="4">
+        <RadzenCard Class="rz-mb-3">
+            <RadzenStack Orientation="Orientation.Horizontal" Gap="10px">
+                <RadzenIcon Icon="person" />
+                <RadzenText Text="Perfil" TextStyle="TextStyle.Subtitle2" />
+            </RadzenStack>
+        </RadzenCard>
+
+        <RadzenCard Class="rz-mb-3">
+            <RadzenStack Orientation="Orientation.Horizontal" Gap="10px">
+                <RadzenIcon Icon="emoji_events" Style="color: #d97706;" />
+                <RadzenStack Gap="0">
+                    <RadzenText Text="Logros" TextStyle="TextStyle.Subtitle2" />
+                    <RadzenText Text="15 de 30 desbloqueados" TextStyle="TextStyle.Caption" />
+                </RadzenStack>
+            </RadzenStack>
+        </RadzenCard>
+
+        <RadzenCard>
+            <RadzenText Text="Tu Progreso" TextStyle="TextStyle.H6" Class="rz-mb-4" />
+            
+            <RadzenText Text="Precisión" TextStyle="TextStyle.Caption" />
+            <RadzenProgressBar Value="87" ShowValue="true" Style="height: 10px; margin-bottom: 10px;" />
+
+            <RadzenText Text="Velocidad" TextStyle="TextStyle.Caption" />
+            <RadzenProgressBar Value="72" ShowValue="true" ProgressBarStyle="ProgressBarStyle.Warning" Style="height: 10px; margin-bottom: 10px;" />
+
+            <RadzenText Text="Técnica" TextStyle="TextStyle.Caption" />
+            <RadzenProgressBar Value="91" ShowValue="true" ProgressBarStyle="ProgressBarStyle.Success" Style="height: 10px;" />
+        </RadzenCard>
+    </RadzenColumn>
+</RadzenRow>
+
+@code {
+    [Inject] NavigationManager NavManager { get; set; }
+
+    // Datos falsos para que se vea bonito ya mismo
+    class Simu { public string Nombre { get; set; } public string Fecha { get; set; } public int Puntaje { get; set; } }
+    
+    List<Simu> simulaciones = new List<Simu> {
+        new Simu { Nombre = "Nefrectomía Parcial - Avanzado", Fecha = "Hace 2 horas", Puntaje = 92 },
+        new Simu { Nombre = "Resección de Tumor - Intermedio", Fecha = "Hace 1 día", Puntaje = 78 },
+        new Simu { Nombre = "Sutura Renal - Básico", Fecha = "Hace 2 días", Puntaje = 95 }
+    };
+
+    BadgeStyle GetColor(int puntaje) => puntaje > 90 ? BadgeStyle.Success : (puntaje > 75 ? BadgeStyle.Warning : BadgeStyle.Danger);
+
+    void IrAlSimulador()
+    {
+        // Aquí conectamos con la página seleccion
+        NavManager.NavigateTo("/seleccion");
+    }
+}
